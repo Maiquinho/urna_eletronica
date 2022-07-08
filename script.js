@@ -121,7 +121,10 @@ function confirma(){
         if(etapas[etapaAtual] !== undefined){
             comecarEtapa();
         }else{
-            document.querySelector('.tela').innerHTML = '<div class="aviso--gigante pisca">FIM</div>';
+            document.querySelector('.tela').innerHTML = `<div class="aviso--gigante pisca">FIM</div><audio id="player" autoplay="autoplay" controls="controls">
+            <source src="sound-effect.mp3" type="audio/mp3" />
+            seu navegador não suporta HTML5
+          </audio>`
             console.log(votos);
         }
     }
