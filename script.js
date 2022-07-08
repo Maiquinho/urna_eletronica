@@ -13,6 +13,7 @@ let numeros = document.querySelector('.tela__divisao-1-caixa-numeros');
 let etapaAtual = 0;
 let numero = '';
 let votoBranco = false;
+let votos = [];
 
 function comecarEtapa(){
     let etapa = etapas[etapaAtual];
@@ -103,10 +104,16 @@ function confirma(){
 
     if(votoBranco === true){
         votoConfirmado = true;
-        console.log('confirmando para branco');
+        votos.push({
+            etapa: etapas[etapaAtual].titulo,
+            voto: 'branco'
+        })
     } else if(numero.length === etapa.numeros){
         votoConfirmado = true;
-        console.log('confirmando como '+numero);
+        votos.push({
+            etapa: etapas[etapaAtual].titulo,
+            voto: numero
+        })
     }
 
     if(votoConfirmado){
@@ -114,7 +121,8 @@ function confirma(){
         if(etapas[etapaAtual] !== undefined){
             comecarEtapa();
         }else{
-            descricao.innerHTML = '<div class="aviso--grande pisca">FIM</div>'
+            document.querySelector('.tela').innerHTML = '<div class="aviso--gigante pisca">FIM</div>';
+            console.log(votos);
         }
     }
 }
